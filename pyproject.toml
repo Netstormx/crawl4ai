@@ -14,17 +14,17 @@ authors = [
 ]
 dependencies = [
     "aiofiles>=24.1.0",
-    "aiohttp>=3.11.11",
+    "aiohttp>=3.14.3",
     "aiosqlite~=0.20",
     "anyio>=4.0.0",
     "lxml~=5.3",
-    "litellm>=1.53.1",
+    "litellm>=1.84.0",
     "numpy>=1.26.0,<3",
     "pillow>=10.4",
     "playwright>=1.49.0",
     "patchright>=1.49.0",
-    "python-dotenv~=1.0",
-    "requests~=2.26",
+    "python-dotenv~=1.2",
+    "requests~=2.33",
     "beautifulsoup4~=4.12",
     "tf-playwright-stealth>=1.1.0",
     "xxhash~=3.4",
@@ -34,7 +34,7 @@ dependencies = [
     "pyOpenSSL>=25.3.0",
     "psutil>=6.1.1",
     "PyYAML>=6.0",
-    "nltk>=3.9.1",
+    "nltk>=3.10.0",
     "rich>=13.9.4",
     "cssselect>=1.2.0",
     "httpx>=0.27.2",
@@ -42,7 +42,7 @@ dependencies = [
     "fake-useragent>=2.0.3",
     "click>=8.1.7",
     "chardet>=5.2.0",
-    "brotli>=1.1.0",
+    "brotli>=1.2.0",
     "humanize>=4.10.0",
     "lark>=1.2.2",
     "alphashape>=1.3.1",
@@ -90,6 +90,14 @@ crawl4ai = ["js_snippet/*.js"]
 
 [tool.setuptools.dynamic]
 version = {attr = "crawl4ai.__version__.__version__"}
+
+[tool.uv]
+# Pins deferred major bumps below their next major so unrelated `uv lock`
+# re-solves don't drag them along; remove once these majors are approved.
+constraint-dependencies = [
+    "cryptography<46",
+    "pyopenssl<26",
+]
 
 [tool.uv.sources]
 crawl4ai = { workspace = true }
